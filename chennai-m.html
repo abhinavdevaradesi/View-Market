@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chennai Metals Price</title>
+    <style>
+        * {
+            text-decoration: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            padding: 0;
+            scroll-behavior: smooth;
+            scroll-padding-top: 2rem;
+            transition: all 4s ease-in-out;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: rgb(15, 15, 15);
+            color: white;
+        }
+
+        .logo img {
+            width: 85px;
+            margin-left: -50px;
+            transition: transform 4s ease-in-out;
+        }
+
+        /* Setting navbar display flex to give the gap btw the navbar elements */
+        .navbar {
+            display: flex;
+            gap: 130px;
+            transition: transform 4s ease-in-out;
+        }
+
+        .mid {
+            max-height: 35px;
+            margin-left: 143px;
+        }
+
+        .mid span {
+            margin-right: 500px;
+        }
+
+        .scroll {
+            /* margin-left: 0px; */
+            margin-right: 50px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(7, 7, 7);
+            color: white;
+            padding: 15px 75px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 4s ease-in-out;
+        }
+
+        /* Navbar a element hover */
+        .navbar a {
+            font-weight: 600;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            position: relative;
+            transition: color 4s, transform 4s ease-in-out;
+            /* Added transform and color transitions */
+        }
+
+        /* It deals with navbar list items */
+        .navbar li {
+            margin-left: 40px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        /* After hover effect for navbar links */
+        .navbar a::after {
+            content: "";
+            width: 0;
+            height: 3px;
+            background: #eeedec;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            transition: width 0.7s ease-in-out;
+            /* Smooth underline transition */
+        }
+
+        /* Hover effect for navbar links */
+        .navbar a:hover {
+            color: #f7f7f7;
+            transform: scale(1.1);
+            /* Enlarges the text on hover */
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        .location-selector {
+            position: relative;
+            top: 102x;
+            left: 55px;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .location-selector label,
+        .location-selector select {
+            color: yellowgreen;
+            font-size: 16px;
+            background-color: black;
+            border: 1px solid yellowgreen;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .location-selector select {
+            width: 160px;
+        }
+
+        .product-container {
+            display: flex;
+            align-items: center;
+            margin: -35px;
+            margin-right: 10px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 5px;
+            justify-content: space-between;
+            width: 80%;
+            margin-bottom: 10px;
+            margin-left: 145px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .product-container:hover {
+            transform: scale(1.01);
+            box-shadow: 0 4px 10px rgba(81, 196, 224, 0.7);
+        }
+
+        #gold {
+            margin-top: 20px;
+        }
+
+
+        .product-container .product-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .product-container .product-image img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+        }
+
+        .product-container .product-info {
+            flex: 2;
+            padding-left: 20px;
+        }
+
+        .product-container .product-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product-container .product-info p {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .price-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .price-box {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 30%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .price-box h4 {
+            font-size: 20px;
+            color: #FFD700;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .price-box .price {
+            font-size: 22px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .price-box .price-change {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: bottom 0.3s ease;
+            font-size: 18px;
+            margin-top: 10px;
+            color: #A9DF00;
+        }
+
+        .price-box:hover {
+            transform: translateY(-10px);
+            /* Move the box up on hover */
+        }
+
+        .price-box:hover h4,
+        .price-box:hover .price {
+            transform: translateY(-10px);
+            /* Move the text up on hover */
+        }
+
+        .price-box:hover .price-change {
+            bottom: 5px;
+            /* Move the change price into view */
+        }
+
+        section {
+            padding-top: 80px;
+        }
+
+        .zoombro {
+            width: 250px;
+            height: 220px;
+        }
+
+        .zoombro:hover {
+            width: 250px;
+            height: 220px;
+            transform: scale(1.15);
+            transition: transform 0.5s;
+        }
+
+        h2 {
+            margin-left: 95px;
+            margin-top: 20px;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            /* Start hidden */
+            transform: translateY(20px);
+            /* Start slightly below */
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+            /* Transition for fade-in */
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .fade-in-text {
+            opacity: 0;
+            /* Start hidden */
+            transform: translateY(20px);
+            /* Start slightly below */
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            /* Transition for fade-in */
+        }
+
+        .fade-in-text.is-visible {
+            opacity: 1;
+            /* Fully visible */
+            transform: translateY(0);
+            /* Move to original position */
+        }
+
+        .fade-in-section {
+            padding: 0px 30px;
+        }
+
+        .product-container {
+            display: flex;
+            align-items: center;
+            margin: 40px 0;
+            padding: 25px;
+            background-color: rgb(25, 25, 25);
+            border-radius: 30px;
+            justify-content: space-between;
+            box-shadow: 0 3px 9px white;
+            z-index: 100;
+        }
+
+        .product-container .product-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .product-container .product-image img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 30px;
+        }
+
+        .product-container .product-info {
+            flex: 2;
+            padding-left: 20px;
+        }
+
+        .product-container .product-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+
+        .product-container .product-info p {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .price-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .price-box {
+            background-color: rgb(50, 50, 50);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            width: 30%;
+            box-shadow: 0 2px 4px white;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .price-box h4 {
+            font-size: 20px;
+            color: #FFD700;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .price-box .price {
+            font-size: 22px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .price-box .price-change {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: bottom 0.3s ease;
+            font-size: 18px;
+            margin-top: 10px;
+            color: #A9DF00;
+        }
+
+        .price-box:hover {
+            transform: translateY(-10px);
+            /* Move the box up on hover */
+        }
+
+        .price-box:hover h4,
+        .price-box:hover .price {
+            transform: translateY(-10px);
+            /* Move the text up on hover */
+        }
+
+        .price-box:hover .price-change {
+            bottom: 5px;
+            /* Move the change price into view */
+        }
+        .zoombro:hover {
+            width: 250px;
+            height: 220px;
+            transform: scale(1.15);
+            transition: transform 0.3s;
+        }
+
+        h2 {
+            margin-left: 95px;
+            margin-top: 20px;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            /* Start hidden */
+            transform: translateY(20px);
+            /* Start slightly below */
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+            /* Transition for fade-in */
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .fade-in-text {
+
+            opacity: 0;
+            /* Start hidden */
+            transform: translateY(20px);
+            /* Start slightly below */
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            /* Transition for fade-in */
+        }
+
+        .fade-in-text.is-visible {
+            opacity: 1;
+            /* Fully visible */
+            transform: translateY(0);
+            /* Move to original position */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Market Logo -->
+        <a href="Home.html" class="logo"> <!-- <a></a>: this will having a space to be occupied. -->
+            <img src="Logo.jpg" alt="Business Logo">
+        </a>
+        <!-- It is an unordered list (ul) and its have list item init (li)-->
+        <div class="mid">
+            <ul class="navbar">
+                <li> <a href="#gold"> Gold</a></li>
+                <li> <a href="#silver"> Silver</a></li>
+                <li> <a href="#platinum"> Platinum</a></li>
+
+            </ul>
+            <marquee behavior="scroll" direction="left" scrollamount="10" class="scroll">
+                <span>We "Welcome to View Market—your ultimate destination for the latest market prices!"🙏🏻</span>
+                <span>"Stay updated every day with accurate data from the market!"😊</span>
+                <span>"Dive into the madness of market prices with View Market!"🎢</span>
+                <span>"Join the fun ride with View Market! We bring you the quirkiest market prices!"🎉</span>
+                <span>"Trust View Market for precise market data!"📊</span>
+                <span>"Looking for the latest market prices? Here we go -> -> -> -> -> </span>
+            </marquee>
+        </div>
+
+        <div class="location-selector">
+            <select id="location" onchange="navigateToLocation()">
+                <option value="chennai-m.html">Chennai</option>
+                <option value="hyd-m.html">Hyderabad</option>
+                <option value="mumbai-m.html">Mumbai</option>
+                <option value="delhi-m.html">Delhi</option>
+                <option value="vizag-m.html">Vishakapatnam</option>
+            </select>
+        </div>
+    </header>
+
+    <section id="#gold" class="fade-in-section">
+        <div class="product-container" id="gold">
+            <div class="product-image">
+                <img src="gold.jpg" class="zoombro" alt="Gold Bar">
+            </div>
+            <div class="product-info">
+                <h3 class="fade-in-text">GOLD PRICE IN CHENNAI</h3>
+                <div class="price-container">
+                    <div class="price-box">
+                        <div class="priceupbro">
+                            <h4 class="fade-in-text">24K Gold Price</h4>
+                            <div class="price">₹8,709</div>
+                        </div>
+                        <div class="price-change">+₹22 </div>
+                    </div>
+                    <div class="price-box">
+                        <div class="priceupbro">
+                            <h4 class="fade-in-text">22K Gold Price</h4>
+                            <div class="price">₹8,055</div>
+                        </div>
+                        <div class="price-change">+₹20 </div>
+                    </div>
+                    <div class="price-box">
+                        <div class="priceupbro">
+                            <h4 class="fade-in-text">18K Gold Price</h4>
+                            <div class="price">₹6,407</div>
+                        </div>
+                        <div class="price-change">+₹16  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="silver" class="fade-in-section">
+        <div class="product-container">
+            <div class="product-image">
+                <img src="silver.jpg" class="zoombro" alt="Silver">
+            </div>
+            <div class="product-info">
+                <h3 class="fade-in-text">SILVER PRICE IN CHENNAI</h3>
+                <div class="price-container">
+                    <div class="price-box">
+                        <h4 class="fade-in-text">Silver/g</h4>
+                        <div class="price">₹102</div>
+                        <div class="price-change">+1 </div>
+                    </div>
+                    <div class="price-box">
+                        <h4 class="fade-in-text">Silver/100g</h4>
+                        <div class="price">₹1,020</div>
+                        <div class="price-change">+₹10 </div>
+                    </div>
+                    <div class="price-box">
+                        <h4 class="fade-in-text">Silver/1kg</h4>
+                        <div class="price">₹10,200</div>
+                        <div class="price-change">+₹100  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="platinum" class="fade-in-section">
+        <div class="product-container">
+            <div class="product-image">
+                <img src="platinum.jpg" class="zoombro" alt="Platinum">
+            </div>
+            <div class="product-info">
+                <h3 class="fade-in-text">PLATINUM PRICE IN CHENNAI</h3>
+                <div class="price-container">
+                    <div class="price-box">
+                        <h4 class="fade-in-text">Platinum/g</h4>
+                        <div class="price">₹275</div>
+                        <div class="price-change">+₹2 </div>
+                    </div>
+                    <div class="price-box">
+                        <h4 class="fade-in-text">Platinum/10g</h4>
+                        <div class="price">₹2,750</div>
+                        <div class="price-change">+₹20 </div>
+                    </div>
+                    <div class="price-box">
+                        <h4 class="fade-in-text">Platinum/kg</h4>
+                        <div class="price">₹27,500</div>
+                        <div class="price-change">+₹200  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>These are the today's latest price from the market to you. THANK YOU 🙏🏻. </p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll('.fade-in-section');
+            const textElements = document.querySelectorAll('.fade-in-text'); // Select text elements
+
+            const options = {
+                root: null, // Use the viewport as the root
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once it becomes visible
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            textElements.forEach(textElement => {
+                observer.observe(textElement); // Observe text elements
+            });
+        });
+
+        function navigateToLocation() {
+            var select = document.getElementById("location");
+            var url = select.value;
+            if (url) {
+                window.location.href = url;
+            }
+        }
+    </script>
+</body>
+
+</html>

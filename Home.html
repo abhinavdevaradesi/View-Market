@@ -1,0 +1,302 @@
+<style>
+    * {
+        text-decoration: none;
+        list-style: none;
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        box-sizing: border-box;
+        padding: 0;
+        scroll-behavior: smooth;
+        scroll-padding-top: 2rem;
+        transition: all 4s ease-in-out;
+        /* Smooth transition for all elements */
+    }
+
+    /* Business logo size */
+    .logo img {
+        width: 85px;
+        margin-left: -50px;
+        transition: transform 4s ease-in-out;
+    }
+
+    /* Setting navbar display flex to give the gap btw the navbar elements */
+    .navbar {
+        display: flex;
+        gap: 130px;
+        transition: transform 4s ease-in-out;
+    }
+
+    .mid {
+        max-height: 35px;
+        margin-left: 143px;
+    }
+
+    .mid span {
+        margin-right: 500px;
+    }
+
+    .scroll {
+        margin-left: -70px;
+        margin-right: 80px;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(7, 7, 7);
+        color: white;
+        padding: 20px 80px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 4s ease-in-out;
+    }
+
+    /* Navbar a element hover */
+    .navbar a {
+        font-weight: 600;
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: #fff;
+        position: relative;
+        transition: color 4s, transform 4s ease-in-out;
+        /* Added transform and color transitions */
+    }
+
+    /* It deals with navbar list items */
+    .navbar li {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    /* After hover effect for navbar links */
+    .navbar a::after {
+        content: "";
+        width: 0;
+        height: 3px;
+        background: #eeedec;
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        transition: width 0.7s ease-in-out;
+        /* Smooth underline transition */
+    }
+
+    /* Hover effect for navbar links */
+    .navbar a:hover {
+        color: #f7f7f7;
+        transform: scale(1.1);
+        /* Enlarges the text on hover */
+    }
+
+    .navbar a:hover::after {
+        width: 100%;
+    }
+
+    .header-btn a {
+        padding: 10px 20px;
+        font-weight: 500;
+        margin-left: 10px;
+        transition: all 4s ease-in-out;
+    }
+
+    .header-btn .login {
+        background-color: rgb(27, 23, 23);
+        color: whitesmoke;
+        border-radius: 0.5rem;
+        border: 2px solid whitesmoke;
+        text-wrap: nowrap;
+        margin-right: -40px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .header-btn .login:hover {
+        background-color: whitesmoke;
+        color: #060606;
+        transform: scale(1.1);
+        /* Enlarges the button on hover */
+    }
+
+    .body {
+        background-color: whitesmoke;
+        transition: background-color 4s ease-in-out;
+        /* Smooth transition of body background */
+    }
+
+    .Home {
+        width: 100%;
+        min-height: 85vh;
+        position: relative;
+        background-image: url(background.jpg);
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: cover;
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 100px;
+        color: black;
+        transition: background-size 4s ease-in-out, transform 4s ease-in-out;
+    }
+
+    /* Before the home elements */
+    .Home::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.1);
+        z-index: 3;
+        transition: opacity 4s ease-in-out;
+        /* Smooth transition for opacity */
+    }
+
+    /* The text will move on z-axis, looks like it's before the home background */
+    .text {
+        position: relative;
+        z-index: 2;
+        transition: transform 4s ease-in-out;
+        /* Smooth transition for text */
+    }
+
+    .text h1 {
+        font-size: 2rem;
+        letter-spacing: .5px;
+        line-height: 1.2;
+        color: black;
+        transition: transform 4s ease-in-out;
+        /* Smooth text transition */
+    }
+
+    .text span {
+        color: red;
+        font-size: 3rem;
+        text-shadow: 2px 9px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .text p {
+        margin: 0.5rem 0 1.5rem;
+        font-size: 1.1rem;
+        max-width: 500px;
+    }
+
+    footer {
+        background-color: #333;
+        padding: 5px;
+        transition: background-color 4s ease-in-out;
+        /* Smooth footer background transition */
+    }
+
+    footer .footer-content ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+    }
+
+    footer .footer-content ul li {
+        margin: 0px 150px;
+        margin-left: 100px;
+        display: flex;
+        gap: 50px;
+        justify-content: space-evenly;
+    }
+
+    footer .footer-content ul li a {
+        color: rgb(180, 239, 91);
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px;
+        transition: background-color 0s, color 0s ease-in-out;
+    }
+
+    footer .footer-content ul li a:hover {
+        background-color: rgb(180, 239, 91);
+        border-radius: 5px;
+        color: black;
+    }
+
+    /* Ensure smooth page load transition for all page elements */
+    body {
+        opacity: 0;
+        animation: fadeIn 3s forwards;
+        /* Fade-in animation on page load */
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 7;
+        }
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+</head>
+
+<body>
+    <header>
+        <!-- Market Logo -->
+        <a href="home.html" class="logo"> <!-- <a></a>: this will having a space to be occupied. -->
+            <img src="Logo.jpg" alt="Business Logo">
+        </a>
+        <!-- It is an unordered list (ul) and its have list item init (li)-->
+        <div class="mid">
+            <ul class="navbar">
+                <li> <a href="Fuels.html"> Fuels</a></li>
+                <li> <a href="Meat.html"> Meat</a></li>
+                <li> <a href="Metals.html"> Metals</a></li>
+                <li> <a href="Veggies.html"> Veggies</a></li>
+            </ul>
+            <marquee behavior="scroll" direction="left" scrollamount="10" class="scroll">
+                <span>We "Welcome to View Market—your ultimate destination for the latest market prices!"🙏🏻</span>
+                <span>"Stay updated every day with accurate data from the market!"😊</span>
+                <span>"Dive into the madness of market prices with View Market!"🎢</span>
+                <span>"Join the fun ride with View Market! We bring you the quirkiest market prices!"🎉</span>
+                <span>"Trust View Market for precise market data!"📊</span>
+                <span>"Looking for the latest market prices? Here we go -> -> -> -> -> </span>
+            </marquee>
+        </div>
+        <!-- header-btn: It is a div, where it's having two btn in <a> which are used to signup and signin.-->
+        <div class="header-btn">
+            <a href="login.html" class="Login">Login</a>
+        </div>
+    </header>
+
+    <section class="home" id="home">
+        <!-- Introduction text -->
+        <div class="text">
+            <h1><span>Tired</span> of searching for prices?<br>
+                Get them in <span>one place!</span></h1><br>
+            <p>Welcome to View Market, We provide the latest and most accurate market prices every day. Whether you're
+                looking for jewellery, fuel, land, or vegetable prices,
+                we aim to keep you updated with the most current data from the market.
+
+            </p>
+            <p>
+                Live Market Updates-Access real-time prices from various cities.
+                Price Comparisons-Compare product prices across different locations for better insights.
+
+            </p>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <ul>
+                <li><a href="mailto:viewmarket05@gmail.com">Email</a></li>
+                <li><a href="tel:+91 6309100913">Contact</a></li>
+                <li><a href="https://www.google.com/maps/place/CMR+Engineering+College/data=!4m7!3m6!1s0x3bcb85fab149cbb5:0x8a587e9e64725dcd!8m2!3d17.6017965!4d78.4875405!16s%2Fg%2F1tdnzxxt!19sChIJtctJsfqFyzsRzV1yZJ5-WIo?authuser=0&hl=en&rclk=1">Address</a></li>
+                <li><a href="help.html">Help</a></li>
+            </ul>
+        </div>
+    </footer>
+    
+</body>
+
+</html>
