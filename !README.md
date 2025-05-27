@@ -12,7 +12,7 @@ Features
 
 ---
 
-Categories & Items
+***Categories & Items***
 
 Vegetables
 - Tomato
@@ -39,7 +39,7 @@ Metals
 
 ---
 
-Built With
+***Built With***
 
 - **HTML5** – Page structure and markup
 - **CSS3** – Styling and layout
@@ -47,28 +47,38 @@ Built With
 
 ---
 
-Getting Started
+***Getting Started***
 
 To run this project locally:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/view-market.git
    cd view-market
-2.Open Home.html in your browser.
+
+2. Open Home.html in your browser.
+   
+
 That’s it — no build tools or installation needed.
 
 ---
 
-PREVIEW:
-![image](https://github.com/user-attachments/assets/83aa33c7-20d0-4133-bec1-2a7d00327eb3)
+***PREVIEW***
+
+![image](https://github.com/user-attachments/assets/83aa33c7-20d0-4133-bec1-2a7d00327eb3) 
+---
 ![image](https://github.com/user-attachments/assets/d4257ea1-617c-4bbf-9c89-fb8b871c1206)
+---
 ![image](https://github.com/user-attachments/assets/33419621-cbf2-4d85-86b0-3d3b4333deba)
 
 
-Contact
+***Contact***
+
 -Got feedback or want to collaborate? Reach out via abhinavdevaradesi@gmail.com
 
-License
+***License***
+
 This project is licensed under the MIT License.
+
 © 2025 D Abhinav
+
 See the LICENSE file for more details.
